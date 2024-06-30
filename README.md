@@ -33,4 +33,6 @@ download [pm2-win-service-install.ps1](https://github.com/gzthomasliang/pm2-serv
 
 To install PM2 as a Windows service using PowerShell 7, execute the `pm2-win-service-install.ps1` script. Following execution, verify the installation by checking for both the “PM2” service within Windows Services and the “pm2” command within your PowerShell console.
 
+![PM2 Windows Service](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*z4lU_5uSA_2wcRGx82nn1A.jpeg)
+
 To start your Node.js application using PM2, execute the command `pm2 start [your-application-name]`. Once running, save the PM2 configuration by executing `pm2 save`. You can then reboot your Windows Server machine to verify that the PM2 service is functioning correctly.
