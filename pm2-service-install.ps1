@@ -25,6 +25,15 @@ try
     return
 }
 
+$nodeversion=$null
+try { $nodeversion=node -v } catch {}
+if($null -eq $nodeversion){
+    Write-host "Node.js must be installed. "
+    return
+}
+refreshenv
+
+
 Set-Location -Path $PSScriptRoot
 $winVersion = [System.Environment]::OSVersion.Version.Major
 Write-host "Windws Version: $winVersion"
