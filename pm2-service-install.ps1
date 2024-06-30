@@ -10,6 +10,12 @@ else {
     return
 }
 
+# Allow Execution of Foreign Scripts
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+
+# Use TLS 1.2
+[System.Net.ServicePointManager]::SecurityProtocol = 3072;
+
 # refreshenv (an alias for Update-SessionEnvironment) is generally the right 
 # command to use to update the current session with environment-variable changes
 # after a choco install ... command.
@@ -19,7 +25,9 @@ try
     Write-host "Downloading choco ..."
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
     $env:ChocolateyInstall = Convert-Path "$((Get-Command choco).Path)\..\.."   
-    Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"    
+    Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"  
+    # Disable Chocolatey's Confirmation Prompt
+    choco feature enable -n allowGlobalConfirmation  
 } catch {
     Write-Host "download chocolatey failed,check you network pls."
     return
@@ -28,8 +36,9 @@ try
 $nodeversion=$null
 try { $nodeversion=node -v } catch {}
 if($null -eq $nodeversion){
-    Write-host "Node.js must be installed. "
-    return
+    # Write-host "Node.js must be installed. "
+    Write-host "installing Node.js ..."
+    choco install nodejs-lts
 }
 refreshenv
 
