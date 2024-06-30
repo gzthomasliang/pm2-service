@@ -9,7 +9,7 @@ else {
     Write-host "Script is not running with Administrator privileges,cannot be process."
     return
 }
-return
+
 # refreshenv (an alias for Update-SessionEnvironment) is generally the right 
 # command to use to update the current session with environment-variable changes
 # after a choco install ... command.
