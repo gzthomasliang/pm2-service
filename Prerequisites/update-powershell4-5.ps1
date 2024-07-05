@@ -12,7 +12,7 @@ if(($winVersionMajor -eq 6) -and ($winVersionMinor -ge 3)) {
         [System.Net.ServicePointManager]::SecurityProtocol = 3072;
         $url='https://go.microsoft.com/fwlink/?linkid=839516'
         Invoke-WebRequest -URI $url -OutFile "$env:tmp\ps5.1.msu"
-        & wusa.exe "$env:tmp\ps5.1.msu" /quiet
+        & wusa.exe "$env:tmp\ps5.1.msu" /quiet /promptrestart
     }	
 }
 Write-host ""
