@@ -1,6 +1,6 @@
 # win21012 update powershell 4 to 5
 $PSVersionTable.PSVersion
-[System.Environment]::OSVersion.Version.Major
+Write-Host windows version: $([System.Environment]::OSVersion.Version)
 
 $winVersionMajor = [System.Environment]::OSVersion.Version.Major
 $winVersionMinor = [System.Environment]::OSVersion.Version.Minor
