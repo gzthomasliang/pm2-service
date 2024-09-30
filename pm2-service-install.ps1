@@ -161,7 +161,8 @@ $serviceConfig=@"
     <arguments>-File "%BASE%\pm2service.ps1"</arguments>
 </service>
 "@
-Add-Content -Path "$pm2Path\service\pm2service.xml" -Value $serviceConfig
+# Use Set-Content to overwrite the file
+Set-Content -Path "$pm2Path\service\pm2service.xml" -Value $serviceConfig
 
 Set-Location "$pm2Path\service"
 & ./pm2service.exe Install
